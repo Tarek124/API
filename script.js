@@ -14,16 +14,21 @@
 fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(json => displayUsers(json))
+    .catch(error =>
+        console.log(error)
+    )
 
 function displayUsers(user) {
-    const userNames = user.map(user => user.name)
+    const userNames = user.map(user => user)
     const ul = document.getElementById("user-container");
+    console.log(userNames[0])
+    // for (let i = 0; i < user.length; i++) {
+    //     const element = user[i];
+    //     const li = document.createElement("li");
 
-    for (let i = 0; i < user.length; i++) {
-        const element = user[i];
-        const li = document.createElement("li");
-        li.innerText = element.name;
-        ul.appendChild(li)
+    // }
+    const li = document.createElement("li");
+    li.innerText = userNames[0].address;
+    ul.appendChild(li)
 
-    }
 }
